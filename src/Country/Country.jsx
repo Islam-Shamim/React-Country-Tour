@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import './Country.css'
-const Country = ({country}) => {
+const Country = ({country,markCountries}) => {
     const {name,capital,flags,population,region} = country;
     const [visited,setVisited] = useState(false);
     const laodCountry = () =>{
         setVisited(!visited)
     }
-    console.log(country)
+    console.log(markCountries)
+    //console.log(country)
     return (
         <div className={`box ${visited?'visited':'non-visited'}`}>
             <div>
@@ -17,7 +18,8 @@ const Country = ({country}) => {
             <p>Region : {region}</p>
             </div>
             <button onClick={laodCountry}>{visited?'Visited':'Going'}</button>
-            <p>{visited?'I have visited there':'I want to go.'}</p>
+            <p>{visited?'I have visited here':'I want to go.'}</p>
+            <button onClick={() =>markCountries(country)}>Mark Country</button>
         </div>
     );
 };
